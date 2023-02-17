@@ -40,7 +40,7 @@ public class UserDAO {
 	}
 	
 	// create or insert user 
-	public void insertUser(User user) throws SQLException {
+	public void insertUser(user user) throws SQLException {
 		try (Connection connection = getConnection();
 		          PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)){
 		      preparedStatement.setString(1, user.getName())  ;
@@ -54,7 +54,7 @@ public class UserDAO {
 	
 	// update user
 	
-	public boolean updateUser(User user) throws SQLException {
+	public boolean updateUser(user user) throws SQLException {
 		boolean rowUpdated ;
 		try(Connection connection = getConnection();
 				PreparedStatement statement = connection.prepareStatement(UPDATE_USERS_SQL);){
@@ -69,8 +69,8 @@ public class UserDAO {
 	}
 
 // select user by id 
-	public User selectUser(int id) {
-		User user = null;
+	public user selectUser(int id) {
+		user user = null;
 		// step1 establishing a connection 
 		try(Connection connection= getConnection();
 				// step2 Create a statement using connection object
@@ -85,7 +85,7 @@ public class UserDAO {
 				 String name = rs.getString("name");
 				 String email = rs.getString("email");
 				 String country = rs.getString("country");
-				 user = new User(id, name, email, country);
+				 user = new user(id, name, email, country);
 			 }
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -94,8 +94,8 @@ public class UserDAO {
 	}
 	
 	// select users 
-	public List<User> selectAllUsers() {
-		List<User> users = new ArrayList<>();
+	public List<user> selectAllUsers() {
+		List<user> users = new ArrayList<>();
 		// step1 establishing a connection 
 		try(Connection connection= getConnection();
 				// step2 Create a statement using connection object
@@ -111,7 +111,7 @@ public class UserDAO {
 				 String name = rs.getString("name");
 				 String email = rs.getString("email");
 				 String country = rs.getString("country");
-				 users.add(new User(id, name, email, country));
+				 users.add(new user(id, name, email, country));
 			 }
 		}catch(SQLException e) {
 			e.printStackTrace();
